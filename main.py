@@ -25,7 +25,10 @@ class QuestionRequest(BaseModel):
     questions_num: int
 
 
-engine = create_engine("sqlite:///quiz.sql")
+sqlite_url = 'sqlite:///quiz.sql'
+pgsql_url = 'postgresql://postgres:test@localhost:5432/postgres'
+engine = create_engine(pgsql_url)
+
 Base.metadata.create_all(bind=engine)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
