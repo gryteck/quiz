@@ -27,7 +27,8 @@ class QuestionRequest(BaseModel):
 
 sqlite_url = 'sqlite:///quiz.sql'
 pgsql_url = 'postgresql://postgres:test@localhost:5432/postgres'
-engine = create_engine(pgsql_url)
+docker_pgsql_url = 'postgresql://admin:test@postgres:5432/quiz'
+engine = create_engine(docker_pgsql_url)
 
 Base.metadata.create_all(bind=engine)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

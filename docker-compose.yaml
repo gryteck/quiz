@@ -1,0 +1,28 @@
+version: "3"
+services:
+  postgres:
+    image: library/postgres:13
+    container_name: quiz_postgres
+    restart: on-failure
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: quiz
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./postgres/:/docker-entrypoint-initdb.d/
+    ports:
+      - "5432:5432"
+
+  gateway:
+    image: quiz_app
+    restart: on-failure
+    build: ./
+    container_name: quiz_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+volumes:
+  db-data:
