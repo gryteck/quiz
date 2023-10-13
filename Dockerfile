@@ -1,12 +1,12 @@
 FROM python:3.10
 # set work directory
-WORKDIR /quiz
+WORKDIR /app
 # copy project depencies
 COPY requirements.txt .
 # install dependencies
 RUN pip3 install -r requirements.txt
 #copy project
-COPY . .
+COPY app .
 # run app
 EXPOSE 8000
 
