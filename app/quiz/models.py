@@ -1,4 +1,4 @@
-from database import Base
+from database import Base, engine
 from sqlalchemy import Column, Integer, String, DateTime
 
 
@@ -10,4 +10,6 @@ class QuizQuestion(Base):
     answer = Column(String)
     created_at = Column(DateTime)
 
+
+Base.metadata.create_all(bind=engine)
 

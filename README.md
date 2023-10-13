@@ -10,9 +10,9 @@ ____
 **Инструкция по развертке на Linux системах:**
 1. Клонировать репозиторий 
 <br>`$ git clone https://github.com/gryteck/quiz`
-2. Собрать образы в docker-compose 
+2. Собрать образы в docker-compose
 <br>`$ docker compose build`
-3. Поднять контейнеры 
+3. Поднять контейнеры (сервер займет порты 8000, 5432)
 <br>`$ docker compose up`
 ____
 **Пример запроса POST:**

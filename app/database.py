@@ -8,7 +8,7 @@ from config import settings
 Base = declarative_base()
 engine = create_engine(settings.DATABASE_URL)
 
-Base.metadata.create_all(bind=engine)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
@@ -18,6 +18,3 @@ def get_db():
         yield db
     finally:
         db.close()
-
-
-
